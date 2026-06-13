@@ -1,133 +1,79 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['intentos'])) {
-    $_SESSION['intentos'] = 0;
-}
-
 include("conexion.php");
 
-$mensaje = "";
+$error = "";
 
-if (isset($_POST['ingresar'])) {
+if ($_POST) {
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
 
-    $usuario = trim($_POST['usuario']);
-    $password = $_POST['password'];
+    $sql = $conexion->prepare("SELECT * FROM usuario WHERE usuario = ? AND contrasena = ?");
+    $sql->execute([$usuario, $contrasena]);
+    $fila = $sql->fetch();
 
-    $sql = "SELECT * FROM usuarios WHERE usuario = ?";
-    $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("s", $usuario);
-    $stmt->execute();
-
-    $resultado = $stmt->get_result();
-
-    if ($resultado->num_rows > 0) {
-
-        $fila = $resultado->fetch_assoc();
-
-        if (password_verify($password, $fila['password'])) {
-
-            $_SESSION['usuario'] = $fila['usuario'];
-            $_SESSION['intentos'] = 0;
-
-            $mensaje = "
-            <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Bienvenido',
-                text: '{$fila['usuario']}'
-            }).then(() => {
-                window.location='index.php';
-            });
-            </script>";
-        } else {
-            $_SESSION['intentos']++;
-        }
-
+    if ($fila) {
+        $_SESSION['usuario'] = $fila['usuario'];
+        header("Location: index.php");
+        exit;
     } else {
-        $_SESSION['intentos']++;
-    }
-
-    if (!empty($_SESSION['intentos']) && $_SESSION['intentos'] > 0 && empty($mensaje)) {
-
-        if ($_SESSION['intentos'] >= 3) {
-
-            $mensaje = "
-            <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Acceso bloqueado',
-                text: 'Has superado los 3 intentos permitidos'
-            });
-            </script>";
-
-        } else {
-
-            $restantes = 3 - $_SESSION['intentos'];
-
-            $mensaje = "
-            <script>
-            Swal.fire({
-                icon: 'warning',
-                title: 'Error',
-                text: 'Usuario o contraseña incorrectos. Intentos restantes: $restantes'
-            });
-            </script>";
-        }
+        $error = "Usuario o contraseña incorrectos";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<style>
-body{
-    font-family: Arial, sans-serif;
-    margin:50px;
-}
-input{
-    padding:8px;
-    margin:5px 0;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Biblioteca El Saber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background:#f4f6f9;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .login-card{
+            border:none;
+            border-radius:20px;
+            width:380px;
+        }
+        .logo{
+            font-size:70px;
+        }
+    </style>
 </head>
 <body>
-<img src="img/logo.jpg" alt="Logo" class="img-fluid" width="100">
-<h2 class="title">Iniciar Sesión</h2>
 
-<?php
-echo $mensaje;
-?>
+<div class="card login-card shadow-lg">
+    <div class="card-body p-5 text-center">
 
-<?php if ($_SESSION['intentos'] < 3) { ?>
+        <div class="logo">📚</div>
+        <h3 class="mb-4">Biblioteca "El Saber"</h3>
 
-<form method="POST">
+        <?php if ($error) { ?>
+            <div class="alert alert-danger"><?= $error ?></div>
+        <?php } ?>
 
-    <input type="text" name="usuario" placeholder="Usuario" required>
-    <br>
+        <form method="POST">
+            <div class="mb-3 text-start">
+                <label class="form-label">Usuario</label>
+                <input type="text" name="usuario" class="form-control" required>
+            </div>
 
-    <input type="password" name="password" placeholder="Contraseña" required>
-    <br>
+            <div class="mb-3 text-start">
+                <label class="form-label">Contraseña</label>
+                <input type="password" name="contrasena" class="form-control" required>
+            </div>
 
-    <button type="submit" name="ingresar">
-        Ingresar
-    </button>
+            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+        </form>
 
-</form>
+    </div>
+</div>
 
-<?php } else { ?>
-
-<h3>Cuenta bloqueada por exceso de intentos.</h3>
-
-<?php } ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
