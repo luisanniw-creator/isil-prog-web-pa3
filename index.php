@@ -46,41 +46,95 @@
 <body>
 
 <div class="container hero">
-    <div class="row g-4">
+    <div class="row g-2">
 
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card card-opcion shadow-lg">
-                <div class="card-body p-5">
+                <div class="card-body p-2">
                     <div class="icono"></div>
-                    <h2 class="mt-3">Módulo Autores</h2>
+                    <h2 class="mt-3">Módulo Libros</h2>
                     <p>Registro y listado de autores.</p>
 
-                    <a href="mascotas/registrar.php" class="btn btn-success">
-                        Registrar Autor
+                    <a href="libros/registrar.php" class="btn btn-success">
+                        Registrar Libro
                     </a>
 
-                    <a href="mascotas/listar.php" class="btn btn-dark">
-                        Listar Autores
+                    <a href="libros/listar.php" class="btn btn-dark">
+                        Listar Libro
                     </a>
                 </div>
             </div>
         </div>
 
         <!-- Citas -->
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card card-opcion shadow-lg">
-                <div class="card-body p-5">
+                <div class="card-body p-2">
                     <div class="icono">📅</div>
-                    <h2 class="mt-3">Módulo Citas</h2>
+                    <h2 class="mt-3">Módulo Autores</h2>
+                    <p>Gestión y control de Autores</p>
+
+                    <a href="autores/registrar.php" class="btn btn-primary">
+                        Registrar Autor
+                    </a>
+
+                    <a href="autores/listar.php" class="btn btn-dark">
+                        Listar Autores
+                    </a>
+                </div>
+            </div>
+        </div>
+
+                <div class="col-md-4">
+            <div class="card card-opcion shadow-lg">
+                <div class="card-body p-2">
+                    <div class="icono">📅</div>
+                    <h2 class="mt-3">Módulo Editoriales</h2>
+                    <p>Gestión y control de editoriales.</p>
+
+                    <a href="editoriales/registrar.php" class="btn btn-primary">
+                        Registrar Editorial
+                    </a>
+
+                    <a href="editoriales/listar.php" class="btn btn-dark">
+                        Listar Editoriales
+                    </a>
+                </div>
+            </div>
+        </div>
+
+                <div class="col-md-4">
+            <div class="card card-opcion shadow-lg">
+                <div class="card-body p-2">
+                    <div class="icono">📅</div>
+                    <h2 class="mt-3">Módulo Estudiantes</h2>
+                    <p>Gestión y control de citas veterinarias.</p>
+
+                    <a href="estudiantes/registrar.php" class="btn btn-primary">
+                        Registrar Estudiante
+                    </a>
+
+                    <a href="estudiantes/listar.php" class="btn btn-dark">
+                        Listar Estudiantes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+                <div class="col-md-4">
+            <div class="card card-opcion shadow-lg">
+                <div class="card-body p-2">
+                    <div class="icono">📅</div>
+                    <h2 class="mt-3">Módulo Categorias</h2>
                     <p>Gestión y control de citas veterinarias.</p>
 
                     <a href="citas/registrar.php" class="btn btn-primary">
                         Registrar Cita
                     </a>
 
-                    <a href="citas/listar.php" class="btn btn-dark">
-                        Listar Citas
+                    <a href="categorias/listar.php" class="btn btn-dark">
+                        Listar Categorias
                     </a>
                 </div>
             </div>

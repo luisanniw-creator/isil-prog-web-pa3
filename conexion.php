@@ -1,25 +1,8 @@
 <?php
-$host = "localhost";
-$db = "biblioteca";
-$user = "root";
-$pass = "Luisa.21";
 
-try {
+$conexion = new mysqli("localhost", "root", "Luisa.21", "biblioteca");
 
-    $conexion = new PDO(
-        "mysql:host=$host;dbname=$db",
-        $user,
-        $pass
-    );
-
-    $conexion->setAttribute(
-        PDO::ATTR_ERRMODE,
-        PDO::ERRMODE_EXCEPTION
-    );
-
-} catch(PDOException $e) {
-
-    die("Error: " . $e->getMessage());
-
+if ($conexion->connect_error) {
+    die("Error de conexión");
 }
 ?>
