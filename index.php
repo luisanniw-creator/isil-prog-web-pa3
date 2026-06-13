@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Veterinaria</title>
+    <title>Biblioteca</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,20 +48,20 @@
 <div class="container hero">
     <div class="row g-4">
 
-        <!-- Mascotas -->
+
         <div class="col-md-6">
             <div class="card card-opcion shadow-lg">
                 <div class="card-body p-5">
-                    <div class="icono">🐶</div>
-                    <h2 class="mt-3">Módulo Mascotas</h2>
-                    <p>Registro y listado de mascotas.</p>
+                    <div class="icono"></div>
+                    <h2 class="mt-3">Módulo Autores</h2>
+                    <p>Registro y listado de autores.</p>
 
                     <a href="mascotas/registrar.php" class="btn btn-success">
-                        Registrar Mascota
+                        Registrar Autor
                     </a>
 
                     <a href="mascotas/listar.php" class="btn btn-dark">
-                        Listar Mascotas
+                        Listar Autores
                     </a>
                 </div>
             </div>

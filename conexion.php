@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$db = "veterinaria";
+$db = "biblioteca";
 $user = "root";
-$pass = "";
+$pass = "Luisa.21";
 
 try {
 
