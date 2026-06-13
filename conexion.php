@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$db = "veterinaria";
+$db = "biblioteca_test";
 $user = "root";
 $pass = "";
 
