@@ -1,27 +1,44 @@
-create database veterinaria;
-use veterinaria;
-create table dueños(
-  id int auto_increment primary key,
-  nombre varchar(100),
-  telefono varchar(20),
-  direccion varchar(150));
-create table mascotas(
-  id int auto_increment primary key,
-  nombre varchar(100),
-  especie varchar(50),
-  raza varchar(50),
-  edad int,
-  dueño_id int,
-  foreign key (dueño_id) references dueños(id));
-create table citas(
-  id int auto_increment primary key,
-  mascota_id int,
-  fecha date,
-  hora time,
-  motivo text,
-  estado varchar(30) default 'Pendiente',
-  foreign key (mascota_id) references mascotas(id));
+create database biblioteca;
+use biblioteca;
+
+create table usuario(
+ID int auto_increment primary key ,
+usuario varchar(255),
+contrasena varchar(255)
+);
+
+create table libros(
+ID int auto_increment primary key ,
+codigo int,
+titulo varchar(255),
+editorial varchar(255),
+fecha date);
+
+create table autores(
+DNI int primary key ,
+nombre varchar(255),
+nacionalidad varchar(255));
+
+create table editoriales(
+RUC int primary key,
+nombre_Editorial varchar(255),
+direccion varchar(150),
+telefono varchar(20));
+
+create table estudiantes(
+  codigo int primary key,
+  nombre varchar(255),
+  apellido varchar(255),
+  carrera varchar(255),
+  telefono varchar(20)
+  );
+
+create table categoria(
+  codigo int primary key,
+  categoria varchar(255),
+  descripcion text
+  );
 
 
-  
+
   
