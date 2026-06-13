@@ -1,0 +1,5 @@
+-Agregar una pantalla de Login
+-Agregar el Card de Dueños
+-Funcionalidad a los Botones
+-Diseño a todas las paginas que tengan
+el mismo navbar
