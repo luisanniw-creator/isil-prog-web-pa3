@@ -2,7 +2,7 @@
 $host = "localhost";
 $db = "biblioteca_test";
 $user = "root";
-$pass = "Luisa.21";
+$pass = "";
 
 try {
 
