@@ -15,7 +15,7 @@
             <?php
               include("../conexion.php");
               $sql =$conexion->query("SELECT * FROM DUEÑOS");
-              while ($fila =$sql->fetch()) {
+              while ($fila =$sql->fetch_assoc()) {
              ?>
                <option value="<?=$fila["id"]?>">
                   <?=$fila["nombre"]?>

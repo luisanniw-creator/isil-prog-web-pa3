@@ -11,7 +11,7 @@ include("../conexion.php");
         <th>Fecha</th>
         <th>Autor</th>
     </tr>    
-    <?php while($fila=$sql->fetch()){?>
+    <?php while($fila=$sql->fetch_assoc()){?>
       <tr>
         <td><?=$fila['ID']?></td>
         <td><?=$fila['codigo']?></td>

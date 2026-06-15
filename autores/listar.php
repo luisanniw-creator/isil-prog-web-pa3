@@ -8,7 +8,7 @@ include("../conexion.php");
         <th>Nombre</th>
         <th>Nacionalidad</th>
     </tr>    
-    <?php while($fila=$sql->fetch()){?>
+    <?php while($fila=$sql->fetch_assoc()){?>
       <tr>
         <td><?=$fila['DNI']?></td>
         <td><?=$fila['nombre']?></td>

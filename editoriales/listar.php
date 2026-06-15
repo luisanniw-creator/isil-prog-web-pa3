@@ -9,7 +9,7 @@ include("../conexion.php");
         <th>Dirección</th>
         <th>Telefono</th>
     </tr>    
-    <?php while($fila=$sql->fetch()){?>
+    <?php while($fila=$sql->fetch_assoc()){?>
       <tr>
         <td><?=$fila['RUC']?></td>
         <td><?=$fila['nombre_Editorial']?></td>

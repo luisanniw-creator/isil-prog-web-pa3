@@ -10,7 +10,7 @@ include("../conexion.php");
         <th>Carrera</th>
         <th>Telefono</th>
     </tr>    
-    <?php while($fila=$sql->fetch()){?>
+    <?php while($fila=$sql->fetch_assoc()){?>
       <tr>
         <td><?=$fila['codigo']?></td>
         <td><?=$fila['nombre']?></td>

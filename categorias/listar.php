@@ -8,7 +8,7 @@ include("../conexion.php");
         <th>Categoria</th>
         <th>Descripcion</th>
     </tr>    
-    <?php while($fila=$sql->fetch()){?>
+    <?php while($fila=$sql->fetch_assoc()){?>
       <tr>
         <td><?=$fila['codigo']?></td>
         <td><?=$fila['categoria']?></td>
