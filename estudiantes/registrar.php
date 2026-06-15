@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Estudiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Registrar Estudiante</title>
 </head>
 <body>
     <form method="POST">
-        <input type="text" name="codigo" placeholder="codigo">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="apellido" placeholder="apellido">
-        <input type="text" name="carrera" placeholder="carrera">
-        <input type="number" name="telefono" placeholder="telefono">
-        <select name="libro_id">
-            <?php
-              include("../conexion.php");
-              $sql =$conexion->query("SELECT * FROM estudiantes");
-              while ($fila =$sql->fetch_assoc()) {
-             ?>
-               <option value="<?=$fila["id"]?>">
-                  <?=$fila["codigo"]?>
-                  <?=$fila["nombre"]?>
-                  <?=$fila["apellido"]?>
-                  <?=$fila["carrera"]?>
-                  <?=$fila["telefono"]?>
-
-                </option>
-              <?php }?>     
-       </select>    
-       </form>    
-    
+        <input type="text" name="DNI" placeholder="DNI" required>
+        <input type="text" name="nombre" placeholder="nombre" required>
+        <input type="text" name="nacionalidad" placeholder="nacionalidad" required>
+        <button type="submit">
+             Guardar
+        </button>   
+    </form>    
+    <?php
+       include("../conexion.php");
+       if($_POST) {
+         $sql="INSERT INTO estudiantes (DNI,nombre,nacionalidad)
+          VALUES(?,?,?)";
+         $stmt =$conexion->prepare($sql);
+         $stmt->bind_param("sss", $_POST['DNI'], $_POST['nombre'], $_POST['nacionalidad']);
+         $stmt->execute();
+         echo "Estudiante Registrado con Exito";
+       }
+     ?> 
 </body>
 </html>

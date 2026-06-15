@@ -19,11 +19,12 @@ DNI int primary key ,
 nombre varchar(255),
 nacionalidad varchar(255));
 
-create table editoriales(
-RUC int primary key,
-nombre_Editorial varchar(255),
-direccion varchar(150),
-telefono varchar(20));
+CREATE TABLE editoriales(
+    RUC VARCHAR(11) PRIMARY KEY,
+    nombre_Editorial VARCHAR(255),
+    direccion VARCHAR(150),
+    telefono VARCHAR(20)
+);
 
 create table estudiantes(
   codigo int primary key,

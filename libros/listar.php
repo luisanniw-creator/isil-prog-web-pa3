@@ -2,7 +2,8 @@
 include("../conexion.php");
  $sql =$conexion->query("SELECT * FROM libros");
 ?>
-<table border="1">
+<table class="table table-bordered">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <tr>
         <th>ID</th>
         <th>Codigo</th>

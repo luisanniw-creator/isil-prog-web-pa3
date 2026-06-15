@@ -15,7 +15,7 @@
 
     <style>
         body{
-            background: #f4f6f9;
+            background: #879fc4;
         }
 
         .hero{
@@ -54,6 +54,7 @@
                 <div class="card-body p-2">
                     <div class="icono"></div>
                     <h2 class="mt-3">Módulo Libros</h2>
+                    <div class="icono">📚</div>
                     <p>Registro y listado de autores.</p>
 
                     <a href="libros/registrar.php" class="btn btn-success">
@@ -71,9 +72,10 @@
         <div class="col-md-4">
             <div class="card card-opcion shadow-lg">
                 <div class="card-body p-2">
-                    <div class="icono">📅</div>
+                     <div class="icono"></div>
                     <h2 class="mt-3">Módulo Autores</h2>
-                    <p>Gestión y control de Autores</p>
+                  <div class="icono">👤</div>
+                    <p>Registro y listado de Autores</p>
 
                     <a href="autores/registrar.php" class="btn btn-primary">
                         Registrar Autor
@@ -89,9 +91,10 @@
                 <div class="col-md-4">
             <div class="card card-opcion shadow-lg">
                 <div class="card-body p-2">
-                    <div class="icono">📅</div>
+                     <div class="icono"></div>
                     <h2 class="mt-3">Módulo Editoriales</h2>
-                    <p>Gestión y control de editoriales.</p>
+                    <div class="icono">🏢</div>
+                    <p>Registro y listado de Editoriales.</p>
 
                     <a href="editoriales/registrar.php" class="btn btn-primary">
                         Registrar Editorial
@@ -105,11 +108,12 @@
         </div>
 
                 <div class="col-md-4">
-            <div class="card card-opcion shadow-lg">
+             <div class="card card-opcion shadow-lg">
                 <div class="card-body p-2">
-                    <div class="icono">📅</div>
+                     <div class="icono"></div>
                     <h2 class="mt-3">Módulo Estudiantes</h2>
-                    <p>Gestión y control de citas veterinarias.</p>
+                  <div class="icono">🎓</div>
+                    <p>Registro y listado de Estudiantes.</p>
 
                     <a href="estudiantes/registrar.php" class="btn btn-primary">
                         Registrar Estudiante
@@ -125,12 +129,13 @@
                 <div class="col-md-4">
             <div class="card card-opcion shadow-lg">
                 <div class="card-body p-2">
-                    <div class="icono">📅</div>
+                     <div class="icono"></div>
                     <h2 class="mt-3">Módulo Categorias</h2>
-                    <p>Gestión y control de citas veterinarias.</p>
+                  <div class="icono">📅</div>
+                    <p>Registro y listado de Categorías.</p>
 
-                    <a href="citas/registrar.php" class="btn btn-primary">
-                        Registrar Cita
+                    <a href="categorias/registrar.php" class="btn btn-primary">
+                        Registrar Categoria
                     </a>
 
                     <a href="categorias/listar.php" class="btn btn-dark">
