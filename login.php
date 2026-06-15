@@ -13,6 +13,7 @@ if (isset($_POST['ingresar'])) {
 
     $usuario = trim($_POST['usuario']);
     $password = $_POST['password'];
+    
 
     $sql = "SELECT * FROM usuario WHERE usuario = ?";
     $stmt = $conexion->prepare($sql);
