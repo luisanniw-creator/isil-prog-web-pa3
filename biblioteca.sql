@@ -7,12 +7,13 @@ usuario varchar(255),
 contrasena varchar(255)
 );
 
-create table libros(
-ID int auto_increment primary key ,
-codigo int,
-titulo varchar(255),
-editorial varchar(255),
-fecha date);
+CREATE TABLE libros (
+    codigo int primary key,
+    titulo varchar(255),
+    autor varchar(255),
+    editorial varchar(255),
+    año date
+);
 
 create table autores(
 DNI int primary key ,
@@ -40,6 +41,8 @@ create table categoria(
   descripcion text
   );
 
-
-
-  
+create table usuarios(
+    id int primary key auto_increment,
+    usuario varchar(100),
+    password varchar(255)
+);

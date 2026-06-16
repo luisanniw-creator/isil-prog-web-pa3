@@ -2,10 +2,10 @@
 
 $conexion = new mysqli("localhost", "root", "Luisa.21", "biblioteca");
 
-$usuario = "admin";
+$usuario = "root";
 $password = password_hash("123456", PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO usuario(usuario, password)
+$sql = "INSERT INTO usuarios(usuario, password)
         VALUES('$usuario', '$password')";
 
 if ($conexion->query($sql)) {
