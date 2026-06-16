@@ -1,18 +1,20 @@
 create database biblioteca;
 use biblioteca;
 
-create table usuario(
-ID int auto_increment primary key ,
-usuario varchar(255),
-contrasena varchar(255)
+create table usuarios(
+    ID int primary key auto_increment,
+    usuario varchar(100),
+    password varchar(255)
 );
 
 CREATE TABLE libros (
-    codigo int primary key,
-    titulo varchar(255),
-    autor varchar(255),
-    editorial varchar(255),
-    año date
+    codigo INT PRIMARY KEY,
+    titulo VARCHAR(255),
+    autor INT,
+    editorial VARCHAR(11),
+    año DATE,
+    FOREIGN KEY (autor) REFERENCES autores(DNI),
+    FOREIGN KEY (editorial) REFERENCES editoriales(RUC)
 );
 
 create table autores(
@@ -41,8 +43,3 @@ create table categoria(
   descripcion text
   );
 
-create table usuarios(
-    id int primary key auto_increment,
-    usuario varchar(100),
-    password varchar(255)
-);

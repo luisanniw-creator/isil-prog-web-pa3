@@ -18,17 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Capturamos los datos del formulario
     $codigo = trim($_POST['codigo']);
     $titulo = trim($_POST['titulo']);
-    $autor = trim($_POST['autor']);
+    $autor = (int) trim($_POST['autor']); // ahora esperamos el DNI (entero)
     $editorial = trim($_POST['editorial']);
-    $anio = trim($_POST['anio']);
+    $fecha = trim($_POST['fecha']);
 
-    // Usamos exactamente el nombre 'año' de tu BD
-    $sql = "INSERT INTO libros (codigo, titulo, autor, editorial, año) VALUES (?, ?, ?, ?, ?)";
+    // Insertamos en la columna `año` (según tu tabla)
+    $sql = "INSERT INTO libros (codigo, titulo, autor, editorial, `año`) VALUES (?, ?, ?, ?, ?)";
 
     $stmt = $conexion->prepare($sql);
 
-    // "issss" -> 'i' (int), 'ssss' (strings)
-    $stmt->bind_param("issss", $codigo, $titulo, $autor, $editorial, $anio);
+    // Tipos: codigo (i), titulo (s), autor (i), editorial (s), fecha (s)
+    $stmt->bind_param("isiss", $codigo, $titulo, $autor, $editorial, $fecha);
 
     if ($stmt->execute()) {
         $mensaje_alerta = '<div class="alert alert-success text-center mt-3 mb-0" role="alert">
@@ -40,6 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                            </div>';
     }
 }
+?>
+
+<?php
+// Consulta para poblar el selector de autores (DNI, nombre)
+$autores = $conexion->query("SELECT DNI, nombre FROM autores ORDER BY nombre ASC");
+// Consulta para poblar el selector de editoriales (RUC, nombre)
+$editoriales = $conexion->query("SELECT RUC, nombre_Editorial FROM editoriales ORDER BY nombre_Editorial ASC");
 ?>
 
 <!DOCTYPE html>
@@ -77,17 +84,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="mb-3">
                         <label class="form-label">Autor</label>
-                        <input class="form-control" type="text" name="autor" required>
+                            <select class="form-select" name="autor" required>
+                                <option value="">Selecciona un autor</option>
+                                <?php while($a = $autores->fetch_assoc()){ ?>
+                                    <option value="<?= $a['DNI'] ?>"><?= htmlspecialchars($a['nombre']) ?></option>
+                                <?php } ?>
+                            </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Editorial</label>
-                        <input class="form-control" type="text" name="editorial" required>
+                        <select class="form-select" name="editorial" required>
+                            <option value="">Selecciona una editorial</option>
+                            <?php while($e = $editoriales->fetch_assoc()){ ?>
+                                <option value="<?= $e['RUC'] ?>"><?= htmlspecialchars($e['nombre_Editorial']) ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label">Fecha de Publicación (Año)</label>
-                        <input class="form-control" type="date" name="anio" required>
+                        <label class="form-label">Fecha de Publicación (fecha)</label>
+                        <input class="form-control" type="date" name="fecha" required>
                     </div>
 
                     <button class="btn btn-primary w-100" type="submit">
