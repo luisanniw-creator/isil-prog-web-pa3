@@ -66,7 +66,7 @@ if (isset($_GET['buscar'])) {
                 <th>Código</th>
                 <th>Título</th>
                 <th>Autor</th>
-                <th>Acciones</th>
+                <th>Editorial</th>
               </tr>
             </thead>
             <tbody>
@@ -78,6 +78,8 @@ if (isset($_GET['buscar'])) {
                     <td class="text-center"><?= $fila['codigo'] ?></td>
                     <td><?= htmlspecialchars($fila['titulo']) ?></td>
                     <td><?= htmlspecialchars($fila['autor']) ?></td>
+                    <td><?= htmlspecialchars($fila['editorial']) ?></td>
+                    <td class="text-center"><?= $fila['año'] ?></td>
                     <td class="text-center" style="width: 180px;">
                       <a href="editar.php?codigo=<?= $fila['codigo'] ?>" class="btn btn-warning btn-sm">
                         ✏️ Editar
@@ -92,7 +94,7 @@ if (isset($_GET['buscar'])) {
               } else {
                 ?>
                 <tr>
-                  <td colspan="4" class="text-center text-muted py-3">No se encontraron libros en la base de datos.</td>
+                  <td colspan="6" class="text-center text-muted py-3">No se encontraron libros en la base de datos.</td>
                 </tr>
               <?php
               }

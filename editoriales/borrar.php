@@ -13,6 +13,13 @@ if (!isset($_GET['ruc'])) {
 }
 
 $ruc = $_GET['ruc'];
+
+// Actualizamos los libros asociados a esta editorial, poniendo NULL en lugar de borrar
+$stmt_libros = $conexion->prepare("UPDATE libros SET editorial = NULL WHERE editorial = ?");
+$stmt_libros->bind_param("s", $ruc);
+$stmt_libros->execute();
+
+// Luego eliminamos la editorial
 $stmt = $conexion->prepare("DELETE FROM editoriales WHERE RUC = ?");
 $stmt->bind_param("s", $ruc);
 $stmt->execute();
